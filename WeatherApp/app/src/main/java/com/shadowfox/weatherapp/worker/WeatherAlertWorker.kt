@@ -32,7 +32,7 @@ class WeatherAlertWorker(
         // Retrieve the last searched city or default to "London"
         val sharedPrefs = appContext.getSharedPreferences("weather_prefs", Context.MODE_PRIVATE)
         val city = sharedPrefs.getString("last_city", "London") ?: "London"
-        val apiKey = sharedPrefs.getString("api_key", "8bcbc0f252cfd77f8ceeaebaa03a0cc5") ?: "8bcbc0f252cfd77f8ceeaebaa03a0cc5"
+        val apiKey = sharedPrefs.getString("api_key", "YOUR_API_KEY") ?: "YOUR_API_KEY"
 
         try {
             val apiService = WeatherApiService.create()

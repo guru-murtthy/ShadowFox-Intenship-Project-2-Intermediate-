@@ -89,12 +89,18 @@ The compiled debug APK will be generated at:
 `ToDoApp/app/build/outputs/apk/debug/app-debug.apk`
 
 #### 2. Compile WeatherApp
+Before compiling, you need to set up your OpenWeatherMap API key:
+- Open `WeatherApp/app/src/main/java/com/shadowfox/weatherapp/MainActivity.kt` and replace `"YOUR_API_KEY"` with your key.
+- Open `WeatherApp/app/src/main/java/com/shadowfox/weatherapp/worker/WeatherAlertWorker.kt` and replace `"YOUR_API_KEY"` with your key.
+
+Then compile using:
 ```bash
 cd WeatherApp
 ./gradlew assembleDebug
 ```
 The compiled debug APK will be generated at:
-`WeatherApp/app/build/outputs/apk/debug/weather-app-debug.apk`
+`WeatherApp/app/build/outputs/apk/debug/app-debug.apk`
+
 
 ---
 

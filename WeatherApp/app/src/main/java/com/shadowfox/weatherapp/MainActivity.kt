@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     // Free OpenWeatherMap API Key
-    private val apiKey = "8bcbc0f252cfd77f8ceeaebaa03a0cc5"
+    private val apiKey = "YOUR_API_KEY"
 
     // Runtime location permission request
     private val locationPermissionLauncher = registerForActivityResult(
