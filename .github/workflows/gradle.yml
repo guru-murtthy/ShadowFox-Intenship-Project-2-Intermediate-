@@ -1,5 +1,5 @@
-# This workflow will build the two Android applications (ToDoApp and WeatherApp)
-# with Gradle, running build checks and dependency submissions.
+# This workflow compiles the ToDoApp and WeatherApp projects in parallel jobs
+# to optimize and reduce CI build times on GitHub Actions.
 
 name: Java CI with Gradle
 
@@ -10,13 +10,15 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-todo:
+    name: Build ToDoApp
     runs-on: ubuntu-latest
     permissions:
       contents: read
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
     
     - name: Set up JDK 21
       uses: actions/setup-java@v4
@@ -24,8 +26,7 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
-    # Configure Gradle cache and setup
-    - name: Setup Gradle
+    - name: Setup Gradle Cache
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 
     - name: Build ToDoApp
@@ -34,10 +35,27 @@ jobs:
         chmod +x gradlew
         ./gradlew assembleDebug
 
+  build-weather:
+    name: Build WeatherApp
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+
+    - name: Setup Gradle Cache
+      uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+
     - name: Build WeatherApp
       run: |
         cd WeatherApp
         chmod +x gradlew
         ./gradlew assembleDebug
-
-
